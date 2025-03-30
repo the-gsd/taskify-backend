@@ -43,7 +43,7 @@ export const getTasks = asyncHandler(async (req, res) => {
       .status(200)
       .json(new apiResponse(200, task, "task fetched successfully."));
   } else {
-    const tasks = await Task.find({ userId }).select("title description");
+    const tasks = await Task.find({ userId });
     if (!tasks) throw new appError(404, "can not find tasks.");
     return res
       .status(200)
